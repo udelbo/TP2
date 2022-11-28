@@ -1,0 +1,16 @@
+{
+  "name": "tp2",
+  "version": "1.0.0",
+  "description": "TP2 Curso web services node Ulises Del Bó",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon src/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2"
+  }
+}
