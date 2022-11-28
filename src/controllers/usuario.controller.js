@@ -1,38 +1,41 @@
 //controlador de usuario
 
+const models = require('../database/models/index')
+
 module.exports = {
     
     listar: async (req, res) => {
-        try{
-            console.log('Listado de usuarios')
+        const users = await models.usuario.findAll()
 
-            res.json({
-                message: 'Listado de usuarios'
-            })
-        }catch(e){
-            console.log(e)
-        }
-    },
-    crear: async (req, res) => {
-        try{
-            console.log('Crear usuario')
-
-            res.json({
-                message: 'Crear usuario'
-            })
-        }catch(e){
-            console.log(e)
-        }
+        res.json({
+            success: true,
+            data: {
+                usuarios: users
+            }
+        })
     },
     listarInfo: async (req, res) => {
-        try{
-            console.log('Información del paciente ' + req.params.idUsuario)
+        const user = await models.usuario.findOne({
+            where: {
+                id: req.params.idUsuario
+            }
+        })
 
-            res.json({
-                message: 'Información del paciente ' + req.params.idUsuario
-            })
-        }catch(e){
-            console.log(e)
-        }
+        res.json({
+            success: true,
+            data: {
+                usuarios: user
+            }
+        })
     },
+    crear: async (req, res) => {
+        const user = await models.usuario.create(req.body)
+
+        res.json({
+            success: true,
+            data: {
+                id: user.id
+            }
+        })
+    }
 }
