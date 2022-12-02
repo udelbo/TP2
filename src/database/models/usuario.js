@@ -23,6 +23,10 @@ module.exports = (sequelize, DataTypes) => {
         edad: {
             type: DataTypes.INTEGER, //tipo de dato
         },
+        profesion: {
+            type: DataTypes.STRING, //tipo de dato
+            allowNull: true, //no permite nulos
+        },
         createdAt: {
             type: DataTypes.DATE, //tipo de dato
             field: 'created_at', //nombre de columna

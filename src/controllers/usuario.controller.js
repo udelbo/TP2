@@ -1,6 +1,7 @@
 //controlador de usuario
 
 const models = require('../database/models/index')
+const errors = require('../const/errors')
 
 module.exports = {
     
@@ -14,19 +15,24 @@ module.exports = {
             }
         })
     },
-    listarInfo: async (req, res) => {
-        const user = await models.usuario.findOne({
-            where: {
-                id: req.params.idUsuario
-            }
-        })
+    listarInfo: async (req, res, next) => {
+        try {
+            const user = await models.usuario.findOne({
+                where: {
+                    id: req.params.idUsuario
+                }
+            })
+            if(!user) return next(errors.UsuarioInexistente)
 
-        res.json({
-            success: true,
-            data: {
-                usuarios: user
-            }
-        })
+            res.json({
+                success: true,
+                data: {
+                    usuarios: user
+                }
+            })
+        }catch(err){
+            return next(err)
+        }
     },
     crear: async (req, res) => {
         const user = await models.usuario.create(req.body)
