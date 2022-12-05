@@ -8,25 +8,37 @@ module.exports = {
     return Promise.all([
       models.usuario.findOrCreate({
         where: {
-          id: "3"
+          id: "1"
         },
         defaults: {
           nombre: "Roberto2",
           apellido: "Carlos2",
-          edad: 31,
+          edad: 34,
           email: "robertocarlos@gmail.com"
         }
       }),
 
       models.usuario.findOrCreate({
         where: {
-          id: "4"
+          id: "2"
         },
         defaults: {
           nombre: "Juana2",
           apellido: "Irene2",
-          edad: 86,
+          edad: 44,
           email: "juanairene@hotmail.com"
+        }
+      }),
+
+      models.usuario.findOrCreate({
+        where: {
+          id: "3"
+        },
+        defaults: {
+          nombre: "Rick",
+          apellido: "Sosa",
+          edad: 56,
+          email: "rd@hotmail.com"
         }
       }),
     ])

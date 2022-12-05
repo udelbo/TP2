@@ -8,7 +8,7 @@ module.exports = {
     return Promise.all([
       models.paciente.findOrCreate({
         where: {
-          id: "10"
+          id: "1"
         },
         defaults: {
           nombre: "Paciente1",
@@ -20,7 +20,7 @@ module.exports = {
 
       models.paciente.findOrCreate({
         where: {
-          id: "11"
+          id: "2"
         },
         defaults: {
           nombre: "Paciente2",
@@ -32,7 +32,7 @@ module.exports = {
 
       models.paciente.findOrCreate({
         where: {
-          id: "12"
+          id: "3"
         },
         defaults: {
           nombre: "Paciente3",

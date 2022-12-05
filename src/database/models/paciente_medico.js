@@ -2,29 +2,12 @@
 
 module.exports = (sequelize, DataTypes) => {
 
-    let Paciente = sequelize.define('paciente', {//definicion de modelo de tabla paciente
+    let Paciente_medico = sequelize.define('paciente_medico', {//definicion de modelo de tabla paciente_medico
         id: {
             type: DataTypes.BIGINT, //tipo de dato
             autoIncrement: true, // auto incremental
             primaryKey: true, // clave primaria
             allowNull: false, //no permite nulos
-        },
-        nombre: {
-            type: DataTypes.STRING, //tipo de dato
-            allowNull: false, //no permite nulos
-        },
-        apellido: {
-            type: DataTypes.STRING, //tipo de dato
-            allowNull: false, //no permite nulos
-        },
-        email: {
-            type: DataTypes.STRING, //tipo de dato
-        },
-        edad: {
-            type: DataTypes.INTEGER, //tipo de dato
-        },
-        obra_social: {
-            type: DataTypes.STRING, //tipo de dato
         },
         createdAt: {
             type: DataTypes.DATE, //tipo de dato
@@ -49,11 +32,12 @@ module.exports = (sequelize, DataTypes) => {
 
     })
 
-    Paciente.associate = models => {
+    Paciente_medico.associate = models => {
         //relaciones entre tablas de base de datos
-        Paciente.hasMany(models.paciente_medico)
+        Paciente_medico.belongsTo(models.paciente)
+        Paciente_medico.belongsTo(models.medico)
     }
 
-    return Paciente
+    return Paciente_medico
 
 }

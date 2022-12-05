@@ -51,6 +51,7 @@ module.exports = (sequelize, DataTypes) => {
 
     Medico.associate = models => {
         //relaciones entre tablas de base de datos
+        Medico.hasMany(models.paciente_medico)
     }
 
     return Medico

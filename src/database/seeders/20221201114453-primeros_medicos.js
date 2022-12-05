@@ -8,7 +8,7 @@ module.exports = {
     return Promise.all([
       models.medico.findOrCreate({
         where: {
-          id: "10"
+          id: "1"
         },
         defaults: {
           nombre: "Andres",
@@ -21,7 +21,7 @@ module.exports = {
 
       models.medico.findOrCreate({
         where: {
-          id: "11"
+          id: "2"
         },
         defaults: {
           nombre: "Mirta",
@@ -29,6 +29,19 @@ module.exports = {
           edad: 86,
           email: "mirtagonzalez@hotmail.com",
           especialidad: "Pediatra"
+        }
+      }),
+
+      models.medico.findOrCreate({
+        where: {
+          id: "3"
+        },
+        defaults: {
+          nombre: "Coca",
+          apellido: "Cola",
+          edad: 86,
+          email: "coca@hotmail.com",
+          especialidad: "neumonologo"
         }
       }),
     ])
