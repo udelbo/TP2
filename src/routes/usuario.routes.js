@@ -8,7 +8,9 @@ const validate = require('../middlewares/validate')
 const usuarioScheme = require('../middlewares/schemes/usuarios.scheme')
 
 router.get('/', usuarioController.listar)
+
 router.post('/', validate(usuarioScheme.crearUsuario), usuarioController.crear)
+
 router.get('/:idUsuario', usuarioController.listarInfo)
 
 module.exports = router

@@ -2,7 +2,7 @@
 
 module.exports = (sequelize, DataTypes) => {
 
-    let Usuario = sequelize.define('usuario', {//definicion de modelo de tabla usuario
+    let Paciente = sequelize.define('paciente', {//definicion de modelo de tabla paciente
         id: {
             type: DataTypes.BIGINT, //tipo de dato
             autoIncrement: true, // auto incremental
@@ -22,11 +22,10 @@ module.exports = (sequelize, DataTypes) => {
         },
         edad: {
             type: DataTypes.INTEGER, //tipo de dato
-        }/* ,
-        profesion: {
+        },
+        obra_social: {
             type: DataTypes.STRING, //tipo de dato
-            allowNull: true, //no permite nulos
-        } */,
+        },
         createdAt: {
             type: DataTypes.DATE, //tipo de dato
             field: 'created_at', //nombre de columna
@@ -50,10 +49,10 @@ module.exports = (sequelize, DataTypes) => {
 
     })
 
-    Usuario.associate = models => {
+    Paciente.associate = models => {
         //relaciones entre tablas de base de datos
     }
 
-    return Usuario
+    return Paciente
 
 }

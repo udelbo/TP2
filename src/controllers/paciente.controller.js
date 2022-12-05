@@ -1,4 +1,4 @@
-//controlador de medico
+//controlador de paciente
 
 const models = require('../database/models/index')
 const errors = require('../const/errors')
@@ -6,28 +6,28 @@ const errors = require('../const/errors')
 module.exports = {
     
     listar: async (req, res) => {
-        const doctors = await models.medico.findAll()
+        const patients = await models.paciente.findAll()
 
         res.json({
             success: true,
             data: {
-                medicos: doctors
+                pacientes: patients
             }
         })
     },
     listarInfo: async (req, res, next) => {
         try {
-            const doctor = await models.medico.findOne({
+            const patient = await models.paciente.findOne({
                 where: {
-                    id: req.params.idMedico
+                    id: req.params.idPaciente
                 }
             })
-            if(!doctor) return next(errors.MedicoInexistente)
+            if(!patient) return next(errors.PacienteInexistente)
 
             res.json({
                 success: true,
                 data: {
-                    medico: doctor
+                    paciente: patient
                 }
             })
         }catch(err){
@@ -35,12 +35,12 @@ module.exports = {
         }
     },
     crear: async (req, res) => {
-        const doctor = await models.medico.create(req.body)
+        const patient = await models.paciente.create(req.body)
 
         res.json({
             success: true,
             data: {
-                id: doctor.id
+                id: patient.id
             }
         })
     }
